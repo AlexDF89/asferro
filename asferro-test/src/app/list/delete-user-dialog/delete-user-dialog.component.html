@@ -1,0 +1,10 @@
+<p mat-dialog-title>Delete {{user.name}} {{user.surname}}</p>
+
+<mat-dialog-content>
+  <p>Are you sure?</p>
+</mat-dialog-content>
+
+<mat-dialog-actions fxLayout="row" fxLayoutAlign="center" fxLayoutGap="16px">
+  <button mat-raised-button color="accent" (click)="dialogRef.close()">No</button>
+  <button mat-stroked-button (click)="dialogRef.close(user.id)">Yes</button>
+</mat-dialog-actions>

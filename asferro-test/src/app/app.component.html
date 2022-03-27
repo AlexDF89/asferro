@@ -1,0 +1,12 @@
+<mat-toolbar color="primary" fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="16px">
+  <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="16px">
+    <div>Users</div>
+    <mat-form-field appearance="outline">
+      <span matPrefix><mat-icon>search</mat-icon></span>
+      <input matInput [formControl]="searchControl" />
+    </mat-form-field>
+  </div>
+  <button mat-raised-button color="accent" (click)="onAdd()">Add user</button>
+</mat-toolbar>
+
+<app-list></app-list>

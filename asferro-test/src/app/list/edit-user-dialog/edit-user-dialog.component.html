@@ -1,0 +1,49 @@
+<p mat-dialog-title>Edit user</p>
+
+<form mat-dialog-content [formGroup]="formGroup" fxLayout="column" fxLayoutGap="16px">
+  <div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="16px">
+    <mat-form-field fxFlex="50">
+      <mat-label>Name</mat-label>
+      <input matInput formControlName="name" name="name" />
+      <mat-error *ngIf="formGroup.controls.name.invalid">{{getErrorMessage(formGroup.controls.name)}}</mat-error>
+    </mat-form-field>
+
+    <mat-form-field fxFlex="50">
+      <mat-label>Surname</mat-label>
+      <input matInput formControlName="surname" name="surname" />
+      <mat-error *ngIf="formGroup.controls.surname.invalid">{{getErrorMessage(formGroup.controls.surname)}}</mat-error>
+    </mat-form-field>
+  </div>
+
+  <div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="16px">
+    <mat-form-field fxFlex="50">
+      <mat-label>Phone</mat-label>
+      <input matInput formControlName="phone" name="phone" />
+      <mat-error *ngIf="formGroup.controls.phone.invalid">{{getErrorMessage(formGroup.controls.phone)}}</mat-error>
+    </mat-form-field>
+
+    <mat-form-field fxFlex="50">
+      <mat-label>Email</mat-label>
+      <input matInput type="email" formControlName="email" name="email" />
+      <mat-error *ngIf="formGroup.controls.email.invalid">{{getErrorMessage(formGroup.controls.email)}}</mat-error>
+    </mat-form-field>
+  </div>
+
+  <div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="16px">
+    <mat-form-field fxFlex="50">
+      <mat-label>Date of birthday</mat-label>
+      <input matInput [matDatepicker]="picker" [max]="today" formControlName="dateOfBirthday">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+      <mat-error *ngIf="formGroup.controls.dateOfBirthday.invalid">{{getErrorMessage(formGroup.controls.dateOfBirthday)}}</mat-error>
+    </mat-form-field>
+  </div>
+
+</form>
+
+<mat-dialog-actions align="end">
+    <button mat-stroked-button (click)="dialogRef.close()">Cancel</button>
+    <button mat-raised-button color="accent" (click)="onSubmit()" [disabled]="!formIsChanged || formGroup.invalid">
+      Save
+    </button>
+</mat-dialog-actions>
